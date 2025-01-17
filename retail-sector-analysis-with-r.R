@@ -18,4 +18,8 @@ data$DtCustomer <- as.Date(data$DtCustomer, format = "%Y-%m-%d")
 # Add a column for the number of years as a customer
 data$YearsAsCustomer <- as.numeric(difftime(Sys.Date(), data$DtCustomer, units = "weeks")) / 52
 
+# Correlation between monetary spend and campaign acceptance
+cor_matrix <- data %>%
+  select(AcceptedCmp1:AcceptedCmp5, MntFishProducts:MntGoldProds) %>%
+  cor(use = "pairwise.complete.obs")
 
